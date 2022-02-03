@@ -1,42 +1,42 @@
 DROP SCHEMA IF EXISTS SpotifyClone;
 CREATE SCHEMA SpotifyClone;
 
-CREATE TABLE SpotifyClone.Artista (
+CREATE TABLE SpotifyClone.Artistas (
   id INTEGER auto_increment PRIMARY KEY NOT NULL,
   artista VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE SpotifyClone.Album (
+CREATE TABLE SpotifyClone.Albuns (
   id INTEGER auto_increment PRIMARY KEY NOT NULL,
   album VARCHAR(50) NOT NULL,
   -- seria YEAR no ano de lancamento?
   ano_lancamento YEAR NOT NULL,
   -- teria que expecificar null or not null nesse caso?
   artista_id INTEGER,
-  FOREIGN KEY (artista_id) REFERENCES Artista (id)
+  FOREIGN KEY (artista_id) REFERENCES Artistas (id)
 );
 
 CREATE TABLE SpotifyClone.Cancoes (
   id INTEGER auto_increment PRIMARY KEY NOT NULL,
-  cancoes VARCHAR(50) NOT NULL,
+  cancao VARCHAR(50) NOT NULL,
   duracao_segundos SMALLINT NOT NULL,
   album_id INTEGER,
-  FOREIGN KEY (album_id) REFERENCES Album (id)
+  FOREIGN KEY (album_id) REFERENCES Albuns (id)
 );
 
-CREATE TABLE SpotifyClone.Plano (
+CREATE TABLE SpotifyClone.Planos (
   id INTEGER auto_increment PRIMARY KEY NOT NULL,
   plano VARCHAR(50) NOT NULL,
   valor_plano DOUBLE NOT NULL
 );
 
-CREATE TABLE SpotifyClone.Usuario (
+CREATE TABLE SpotifyClone.Usuarios (
   id INTEGER auto_increment PRIMARY KEY NOT NULL,
   usuario VARCHAR(50) NOT NULL,
   idade TINYINT NOT NULL,
   data_assinatura DATE NOT NULL,
   plano_id INTEGER,
-  FOREIGN KEY (plano_id) REFERENCES Plano (id)
+  FOREIGN KEY (plano_id) REFERENCES Planos (id)
 );
 
 CREATE TABLE SpotifyClone.Reproducoes (
@@ -45,18 +45,18 @@ CREATE TABLE SpotifyClone.Reproducoes (
   cancoes_id INTEGER,
   usuario_id INTEGER,
   FOREIGN KEY (cancoes_id) REFERENCES Cancoes (id),
-  FOREIGN KEY (usuario_id) REFERENCES Usuario (id)
+  FOREIGN KEY (usuario_id) REFERENCES Usuarios (id)
 );
 
 CREATE TABLE SpotifyClone.Seguidores (
 	usuario_id INTEGER,
     artista_id INTEGER,
-    FOREIGN KEY (usuario_id) REFERENCES Usuario (id),
-	FOREIGN KEY (artista_id) REFERENCES Artista (id),
+    FOREIGN KEY (usuario_id) REFERENCES Usuarios (id),
+	FOREIGN KEY (artista_id) REFERENCES Artistas (id),
     CONSTRAINT PRIMARY KEY(artista_id, usuario_id)
 );
 
-INSERT INTO SpotifyClone.Artista (artista)
+INSERT INTO SpotifyClone.Artistas (artista)
   VALUES ('Walter Phoenix'),
 		 ('Peter Strong'),
          ('Lance Day'),
@@ -64,7 +64,7 @@ INSERT INTO SpotifyClone.Artista (artista)
          ('Tyler Isle'),
          ('Fog');
          
-INSERT INTO SpotifyClone.Album (album, ano_lancamento, artista_id)
+INSERT INTO SpotifyClone.Albuns (album, ano_lancamento, artista_id)
   VALUES ('Envious', 1990, 1),
          ('Exuberant', 1993, 1),
          ('Hallowed Steam', 1995, 2),
@@ -76,7 +76,7 @@ INSERT INTO SpotifyClone.Album (album, ano_lancamento, artista_id)
          ('No guarantees', 2015, 5),
          ('Apparatus', 2015, 6);
          
-INSERT INTO SpotifyClone.Cancoes (cancoes, duracao_segundos, album_id)
+INSERT INTO SpotifyClone.Cancoes (cancao, duracao_segundos, album_id)
   VALUES ('Soul For Us', 200, 1),
 		  ('Reflections Of Magic', 163, 1),
 		  ('Dance With Her Own', 116, 1),
@@ -118,13 +118,13 @@ INSERT INTO SpotifyClone.Cancoes (cancoes, duracao_segundos, album_id)
 		  ('Baby', 136, 10),
 		  ('You Make Me Feel So..', 83, 10);
          
-INSERT INTO SpotifyClone.Plano (plano, valor_plano)
+INSERT INTO SpotifyClone.Planos (plano, valor_plano)
   VALUES ('gratuito', 0.00),
          ('familiar', 7.99),
          ('universitário', 5.99),
          ('pessoal', 6.99);
          
-INSERT INTO SpotifyClone.Usuario (usuario, idade, plano_id, data_assinatura)
+INSERT INTO SpotifyClone.Usuarios (usuario, idade, plano_id, data_assinatura)
   VALUES ('Thati', 23, 1, '2019-10-20'),
 		  ('Cintia', 35, 4, '2017-12-30'),
 		  ('Bill', 20, 2, '2019-06-05'),
