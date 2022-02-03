@@ -40,12 +40,12 @@ CREATE TABLE SpotifyClone.Usuarios (
 );
 
 CREATE TABLE SpotifyClone.Reproducoes (
-  id INTEGER auto_increment PRIMARY KEY NOT NULL,
   data_reproducao DATETIME NOT NULL,
   cancoes_id INTEGER,
   usuario_id INTEGER,
   FOREIGN KEY (cancoes_id) REFERENCES Cancoes (id),
-  FOREIGN KEY (usuario_id) REFERENCES Usuarios (id)
+  FOREIGN KEY (usuario_id) REFERENCES Usuarios (id),
+  CONSTRAINT PRIMARY KEY(cancoes_id, usuario_id)
 );
 
 CREATE TABLE SpotifyClone.Seguidores (
