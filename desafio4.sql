@@ -1,3 +1,5 @@
+-- https://stackoverflow.com/questions/36919034/select-true-false-based-on-col-value-in-a-group-by
+
 SELECT 
 	u.usuario, 
 	IF(
