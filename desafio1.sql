@@ -137,7 +137,7 @@ INSERT INTO SpotifyClone.Usuarios (usuario, idade, plano_id, data_assinatura)
 		  ('Paul', 46, 4, '2017-01-17');
          
 INSERT INTO SpotifyClone.Reproducoes (usuario_id, cancoes_id, data_reproducao)
-   VALUES (1, 7, '2020-02-28 10:45:55'),
+   VALUES (1, 36, '2020-02-28 10:45:55'),
 		  (1, 25, '2020-05-02 05:30:35'),
 		  (1, 23, '2020-03-06 11:22:33'),
 		  (1, 14, '2020-08-05 08:05:17'),
