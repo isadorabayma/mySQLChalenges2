@@ -120,9 +120,9 @@ INSERT INTO SpotifyClone.Cancoes (cancao, duracao_segundos, album_id)
          
 INSERT INTO SpotifyClone.Planos (plano, valor_plano)
   VALUES ('gratuito', 0.00),
-         ('familiar', 7.99),
-         ('universitário', 5.99),
-         ('pessoal', 6.99);
+		 ('universitário', 5.99),
+         ('pessoal', 6.99),
+         ('familiar', 7.99);
          
 INSERT INTO SpotifyClone.Usuarios (usuario, idade, plano_id, data_assinatura)
   VALUES ('Thati', 23, 1, '2019-10-20'),
